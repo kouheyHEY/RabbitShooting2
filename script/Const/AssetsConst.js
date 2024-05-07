@@ -1,8 +1,8 @@
 const C_ASSETS = {
     /** アセットフォルダパス 画像 */
-    FILE_PATH_IMAGE: '../assets/img/',
+    FILE_PATH_IMAGE: './assets/img/',
     /** アセットフォルダパス サウンド */
-    FILE_PATH_MUSIC: '../assets/sound/',
+    FILE_PATH_MUSIC: './assets/sound/',
     /** アセットフォルダパス プレイヤー */
     FILE_PATH_IMAGE_PLAYER: 'chara/player/',
     /** アセットフォルダパス プレイヤーの弾 */
