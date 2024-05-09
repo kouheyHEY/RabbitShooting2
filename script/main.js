@@ -11,7 +11,7 @@ const config = {
   autoCenter: Phaser.Scale.CENTER_BOTH,
   width: C_COMMON.D_WIDTH,
   height: C_COMMON.D_HEIGHT
- }
+ },
 
 	// アンチエイリアス
 	antialias: false,
