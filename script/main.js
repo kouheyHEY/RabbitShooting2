@@ -1,8 +1,17 @@
 // 設定データ
 const config = {
 	type: Phaser.AUTO,
-	width: C_COMMON.D_WIDTH,
-	height: C_COMMON.D_HEIGHT,
+	// width: C_COMMON.D_WIDTH,
+	// height: C_COMMON.D_HEIGHT,
+
+ // 画面設定
+ scale: {
+  mode: Phaser.Scale.FIT,
+  parent: 'yourGameContainer',
+  autoCenter: Phaser.Scale.CENTER_BOTH,
+  width: C_COMMON.D_WIDTH,
+  height: C_COMMON.D_HEIGHT
+ }
 
 	// アンチエイリアス
 	antialias: false,
