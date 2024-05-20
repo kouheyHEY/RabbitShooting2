@@ -89,4 +89,13 @@ const C_GAMESCENE = {
 
     /** ボスの追尾弾発射の間隔（フレーム） パターン3 */
     BULLET_BOSS_1_FRAME_SPAN_PATTERN_3: C_COMMON.FPS * 2,
+
+    /** ボスのHPバー */
+    HPBAR_BOSS_WIDTH: 300,
+    HPBAR_BOSS_HEIGHT: 20,
+    HPBAR_BOSS_POS_X: 20,
+    HPBAR_BOSS_POS_Y: 20,
+
+    HPBAR_BOSS_COLOR_LIFE: 0x00FF00,
+    HPBAR_BOSS_COLOR_NOLIFE: 0xFF0000,
 }

@@ -33,6 +33,16 @@ class GameScene extends Phaser.Scene {
             { fontSize: '32px', fontFamily: C_COMMON.FONT_FAMILY_BIT12, fill: '#fff' })
             .setOrigin(1);
 
+        // ボスのHPゲージ
+        this.bossHpBar = this.add.graphics();
+        // 赤色のバー
+        this.bossHpBar.fillStyle(C_GAMESCENE.HPBAR, 1);
+        // 画面上部の指定位置に表示
+        this.bossHpBar.fillRect(
+            C_GAMESCENE.HPBAR_BOSS_POS_X, C_GAMESCENE.HPBAR_BOSS_POS_Y,
+            C_GAMESCENE.HPBAR_BOSS_WIDTH, C_GAMESCENE.HPBAR_BOSS_HEIGHT
+        );
+
         // ゲームオーバーフラグ
         this.gameOverFlg = false;
 
@@ -130,6 +140,8 @@ class GameScene extends Phaser.Scene {
 
         // ボスの更新処理
         this.updateBoss();
+
+        this.drawBossHpGuage();
 
         // 画面外に出たプレイヤーの弾を削除
         this.playerBullets.getChildren().forEach(bullet => {
@@ -455,6 +467,42 @@ class GameScene extends Phaser.Scene {
 
             }
         });
+    }
+
+    /** HPゲージを描画する
+     * ボスがいない場合は非表示
+     */
+    drawBossHpGuage() {
+        // ボスが存在しない場合はゲージ描画をしない
+        if (this.bosses.getChildren().length == 0) {
+            this.bossHpBar.clear();
+            return;
+        }
+        this.bossHpBar.clear();
+
+        // 赤ゲージを描画
+        this.bossHpBar.fillStyle(C_GAMESCENE.HPBAR_BOSS_COLOR_NOLIFE, 1);
+
+        // 画面上部の指定位置に表示
+        this.bossHpBar.fillRect(
+            C_GAMESCENE.HPBAR_BOSS_POS_X,
+            C_GAMESCENE.HPBAR_BOSS_POS_Y,
+            C_GAMESCENE.HPBAR_BOSS_WIDTH,
+            C_GAMESCENE.HPBAR_BOSS_HEIGHT
+        );
+
+        // 緑ゲージを描画
+        this.bossHpBar.fillStyle(C_GAMESCENE.HPBAR_BOSS_COLOR_LIFE, 1);
+        // 画面上部の指定位置に表示
+        let hpRate = this.bosses.getChildren()[0].hp / C_GAMESCENE.BOSS_1_HP;
+
+        this.bossHpBar.fillRect(
+            C_GAMESCENE.HPBAR_BOSS_POS_X,
+            C_GAMESCENE.HPBAR_BOSS_POS_Y,
+            hpRate * C_GAMESCENE.HPBAR_BOSS_WIDTH,
+            C_GAMESCENE.HPBAR_BOSS_HEIGHT
+        );
+
     }
 
     /** 敵とプレイヤーの衝突判定 */
